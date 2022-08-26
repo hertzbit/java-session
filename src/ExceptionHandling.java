@@ -4,6 +4,10 @@ import java.io.FileNotFoundException;
 
 public class ExceptionHandling {
 
+    static int someFunction (int number) {
+        return number - someFunction(number - 1);
+    }
+
     public static void readFromFile (File file) {
 
         try {
@@ -28,14 +32,15 @@ public class ExceptionHandling {
 //        }
 
         int numOne = 5;
-        int numTwo = 0;
+        int numTwo = 1;
 
         try {
             int value = numOne / numTwo;
-        } catch (ArithmeticException exception) {
+            someFunction(Integer.MAX_VALUE);
+        } catch (Exception exception) {
             System.out.println("User has entered 0 as divisor");
         } finally {
-            System.out.println("Closing used resources");
+            System.out.println("Finally Block");
         }
 
         System.out.println("End of Program");
